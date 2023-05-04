@@ -12,7 +12,8 @@ $CUST_ID = $_POST["CUST_ID"];
 $TXN_AMOUNT = $_POST["TXN_AMOUNT"];
 $sql = "UPDATE bookingtable SET amount = '$TXN_AMOUNT' where ORDERID = '$ORDER_ID'";
 $result = mysqli_query($con, $sql);
-?>
+?>  
+
 
 <html lang="en">
   <head>

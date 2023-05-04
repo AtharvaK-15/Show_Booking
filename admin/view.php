@@ -30,7 +30,7 @@ if (isset($_POST['but_logout'])) {
 </head>
 
 <body>
-    
+
     <?php include('header.php'); ?>
 
     <div class="admin-container">
@@ -55,7 +55,7 @@ if (isset($_POST['but_logout'])) {
                             <th>Booking ID</th>
                             <th>Movie ID</th>
                             <th>Name</th>
-                            <th>Phone Number</th>
+
                             <th>Email</th>
                             <th>Date</th>
                             <th>Theatre & Type</th>
@@ -72,12 +72,13 @@ if (isset($_POST['but_logout'])) {
                             $select = "SELECT * FROM `bookingtable`";
                             $run = mysqli_query($con, $select);
                             while ($row = mysqli_fetch_array($run)) {
+                                $sql = "SELECT * From users where id =".$row['fk_user'];
+                                $result = mysqli_query($con, $sql);
+                                $row1 = mysqli_fetch_assoc($result);
                                 $bookingid = $row['bookingID'];
                                 $movieID = $row['movieID'];
-                                $bookingFName = $row['bookingFName'];
-                                $bookingLName = $row['bookingLName'];
-                                $mobile = $row['bookingPNumber'];
-                                $email = $row['bookingEmail'];
+                                $bookingFName = $row1['username'];
+                                $email = $row1['email'];
                                 $date = $row['bookingDate'];
                                 $theatre = $row['bookingTheatre'];
                                 $type = $row['bookingType'];
@@ -85,21 +86,20 @@ if (isset($_POST['but_logout'])) {
                                 $ORDERID = $row['ORDERID'];
                                 $amount = $row['amount'];
 
-                                
+
 
                             ?>
                                 <tr align="center">
-                                <td><?php echo $bookingid; ?></td>
+                                    <td><?php echo $bookingid; ?></td>
                                     <td><?php echo $movieID; ?></td>
-                                    <td><?php echo $bookingFName . ' ' . $bookingLName; ?></td>
-                                    <td><?php echo $mobile; ?></td>
+                                    <td><?php echo $bookingFName; ?></td>
                                     <td><?php echo $email; ?></td>
                                     <td><?php echo $date; ?></td>
                                     <td><?php echo $theatre . ' ' . $type; ?></td>
                                     <td><?php echo $time; ?></td>
                                     <td><?php echo $ORDERID; ?></td>
                                     <td><?php echo $amount; ?></td>
-                                    <td><button type="submit" type="button" class="btn btn-outline-danger"><?php echo  "<a href='deleteBooking.php?id=" . $row['bookingID'] . "' >delete</a>"; ?></button><button name="update"  type="submit" onclick="" type="button" class="btn btn-outline-warning"><?php echo  "<a href='editBooking.php?id=" . $row['bookingID'] . "'>update</a>"; ?></button></td>
+                                    <td><button type="submit" type="button" class="btn btn-outline-danger"><?php echo  "<a href='deleteBooking.php?id=" . $row['bookingID'] . "' >delete</a>"; ?></button><button name="update" type="submit" onclick="" type="button" class="btn btn-outline-warning"><?php echo  "<a href='editBooking.php?id=" . $row['bookingID'] . "'>update</a>"; ?></button></td>
                                     <td></td>
                                 </tr>
 

@@ -51,8 +51,8 @@
         <div class="contact-us-section contact-us-section2">
             <h1>Address & Info</h1>
             <h3>Phone Numbers</h3>
-            <p><a href="tel:01011391148">+91 9820993426</a><br>
-                <a href="tel:01011391148">+91 8080276338</a></p>
+            <p><a href="#">+91 9820993426</a><br>
+                <a href="#">+91 8080276338</a></p>
             <h3>Address</h3>
             <p>Mumbai</p>
             <h3>E-mail</h3>

@@ -1,6 +1,21 @@
+<?php
+  include("./connection.php");
+  session_start();
+if(isset($_POST['ORDERID'])){
+    $order = $_POST['ORDERID'];
+    $amount = $_POST['amount'];
+    $sql = "UPDATE bookingtable SET amount = '$amount', paid = 1 WHERE ORDERID = '$order'";
+    $result = mysqli_query($con, $sql);
+    if($result){
+        echo "Payment Successfull";
+    }else{
+        echo "Payment Failed";
+    }
+  }
+?>
 <html lang="en">
   <head>
-    <title>Payment Failed</title>
+    <title>Payment Successfull</title>
 
     <!-- Google font -->
     <link
@@ -133,6 +148,7 @@
           <h2>Payment Is Successfull</h2>
         </div>
         <a href="./index.php">Go TO Homepage</a>
+        <a href="./reciept.php?id=<?php echo $order; ?>">Get receipt</a>
       </div>
     </div>
   </body>

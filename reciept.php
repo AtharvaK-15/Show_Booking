@@ -145,12 +145,14 @@
 				exit;
 			}
 			while ($row = mysqli_fetch_assoc($result)) {
+				$sql = "SELECT * From users where id =".$row['fk_user'];
+				$result = mysqli_query($con, $sql);
+				$row1 = mysqli_fetch_assoc($result);
 				$bookingid = $row['bookingID'];
 				$movieID = $row['movieID'];
-				$bookingFName = $row['bookingFName'];
-				$bookingLName = $row['bookingLName'];
-				$mobile = $row['bookingPNumber'];
-				$email = $row['bookingEmail'];
+				$bookingFName = $row1['username'];
+				$email = $row1['email'];
+
 				$date = $row['bookingDate'];
 				$theatre = $row['bookingTheatre'];
 				$type = $row['bookingType'];
@@ -196,8 +198,7 @@
 							</td>
 
 							<td>
-								<?php echo $bookingFName . ' ' . $bookingLName; ?><br>
-								<?php echo $mobile; ?><br>
+								<?php echo $bookingFName; ?><br>
 								<?php echo $email; ?>
 							</td>
 						</tr>
@@ -237,7 +238,7 @@
 
 			<tr class="item">
 				<td>
-					Movie Date
+					Movie Booking Date
 				</td>
 
 				<td>

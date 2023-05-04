@@ -10,4 +10,4 @@
     } else {
         echo "Error deleting record: " . $con->error;
     }
-?>
+?>  

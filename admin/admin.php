@@ -29,7 +29,7 @@ if (!isset($_SESSION['uname'])) {
     $bookingsNo = mysqli_num_rows(mysqli_query($con, $sql));
     $messagesNo = mysqli_num_rows(mysqli_query($con, "SELECT * FROM feedbacktable"));
     $moviesNo = mysqli_num_rows(mysqli_query($con, "SELECT * FROM movietable"));
-    $userNo = mysqli_num_rows(mysqli_query($con, "SELECT * FROM users"));
+    $userNo = mysqli_num_rows(mysqli_query($con, "SELECT * FROM admin"));
     ?>
 
     <?php include('header.php'); ?>
@@ -51,8 +51,7 @@ if (!isset($_SESSION['uname'])) {
                                 <th>Booking ID</th>
                                 <th>Movie ID</th>
                                 <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Phone Number</th>
+
                                 <th>Email</th>
                                 <th>Date</th>
                                 <th>Theatre</th>
@@ -65,26 +64,23 @@ if (!isset($_SESSION['uname'])) {
                                 $select = "SELECT * FROM `bookingtable`";
                                 $run = mysqli_query($con, $select);
                                 while ($row = mysqli_fetch_array($run)) {
+                                    $sql = "SELECT * From users where id =".$row['fk_user'];
+                                    $result = mysqli_query($con, $sql);
+                                    $row1 = mysqli_fetch_assoc($result);
+                                    $bookingFName = $row1['username'];
                                     $bookingid = $row['bookingID'];
                                     $movieID = $row['movieID'];
-                                    $bookingFName = $row['bookingFName'];
-                                    $bookingLName = $row['bookingLName'];
-                                    $mobile = $row['bookingPNumber'];
-                                    $email = $row['bookingEmail'];
+                                    $email = $row1['email'];
                                     $date = $row['bookingDate'];
                                     $theatre = $row['bookingTheatre'];
                                     $type = $row['bookingType'];
                                     $ORDERID = $row['ORDERID'];
-
-
-
                                 ?>
                                     <tr align="center">
                                         <td><?php echo $bookingid; ?></td>
                                         <td><?php echo $movieID; ?></td>
                                         <td><?php echo $bookingFName; ?></td>
-                                        <td><?php echo $bookingLName; ?></td>
-                                        <td><?php echo $mobile; ?></td>
+
                                         <td><?php echo $email; ?></td>
                                         <td><?php echo $date; ?></td>
                                         <td><?php echo $theatre; ?></td>

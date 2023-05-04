@@ -65,7 +65,7 @@ $row = mysqli_fetch_array($movieImageById);
                 </table>
             </div>
             <div class="booking-form-container">
-                <form action="verify.php" method="POST">
+                <form action="./Seat/3a-reservation.php" method="POST">
 
 
                     <select name="theatre" required>
@@ -101,17 +101,7 @@ $row = mysqli_fetch_array($movieImageById);
                         <option value="21-00">09:00 PM</option>
                         <option value="24-00">12:00 PM</option>
                     </select>
-
-                    <input placeholder="First Name" type="text" name="fName" required>
-
-                    <input placeholder="Last Name" type="text" name="lName">
-
-                    <input placeholder="Phone Number" type="text" name="pNumber" required>
-                    <input placeholder="email" type="email" name="email" required>
-                    <input type="hidden" name="movie_id" value="<?php echo $id; ?>">
-
-
-
+                    <input type="hidden" name="movie_id" value="<?php echo $row['movieID']; ?>">
                     <button type="submit" value="save" name="submit" class="form-btn">Book a seat</button>
 
                 </form>

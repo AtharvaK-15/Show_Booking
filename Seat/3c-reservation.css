@@ -1,0 +1,58 @@
+/* (A) ENTIRE PAGE */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+/* (B) SEATS LAYOUT */
+#layout {
+  max-width: 450px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  margin-bottom: 30px;
+}
+.seat {
+  text-align: center;
+  padding: 20px 0;
+  background: #a4bcff;
+}
+#layout .seat {
+  cursor: pointer;
+}
+.taken {
+  color: #a9a9a9;
+  background: #f1f1f1 !important;
+}
+.selected {
+  background: #ffe319 !important;
+}
+
+/* (C) LEGEND */
+#legend {
+  display: grid;
+  grid-template-columns: 100px 200px;
+  margin-bottom: 30px;
+}
+#legend div {
+  padding: 10px;
+}
+
+/* (D) "CHECKOUT" */
+#go {
+  border: 0;
+  padding: 20px;
+  font-weight: 700;
+  color: #fff;
+  background: #9f3737;
+  cursor: pointer;
+}
+
+.screen {
+  background-color: rgb(203, 81, 81);
+  height: 120px;
+  width: 100%;
+  margin: 15px 0;
+  transform: rotateX(-48deg);
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+}
